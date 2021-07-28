@@ -22,16 +22,12 @@ car.create_car()
 score = Scoreboard()
 
 game_is_on = True
-count = 0.0
 while game_is_on:
     time.sleep(0.1)
-    count += 0.1
     # 3/car.level - frequency cars spawn
-    if count > 3/car.level:
-        count = 0.0
-        car.create_car()
     car.drive()
     screen.update()
+    car.create_car()
     for index in range(car.get_amount_of_cars()):
         if car.get_car(index).distance(tim) < 20:
             game_is_on = False

@@ -1,7 +1,6 @@
 import random
 from turtle import Turtle
 
-
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
@@ -17,14 +16,7 @@ class CarManager():
         Creates cars on the right side of the window.
         The number of cars created depends on the level.
         """
-        #           lower bound            upper bound
-        #           1+3*(self.level-1)     self.level*5
-        # level 1:          1                   5
-        # level 1:          4                   10
-        # level 1:          7                   15
-        lower_bound = 1+3*(self.level-1)
-        upper_bound = self.level*5
-        for i in range(random.randint(lower_bound, upper_bound)):
+        if random.randint(1, 6) < 2 + self.level - 1:
             car = Turtle()
             car.shape("square")
             car.setheading(180)
