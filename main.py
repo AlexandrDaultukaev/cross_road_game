@@ -30,6 +30,7 @@ while game_is_on:
     car.create_car()
     for index in range(car.get_amount_of_cars()):
         if car.get_car(index).distance(tim) < 20:
+            score.game_over()
             game_is_on = False
     if tim.ycor() > 280:
         car.level_up()
