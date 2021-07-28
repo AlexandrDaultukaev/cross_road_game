@@ -49,3 +49,10 @@ class CarManager():
 
     def get_car(self, index):
         return self.cars[index]
+
+    def level_up(self):
+        for car in self.cars:
+            car.hideturtle()
+            car.clear()
+        self.level += 1
+        self.cars = []

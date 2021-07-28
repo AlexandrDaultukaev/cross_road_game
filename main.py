@@ -11,20 +11,21 @@ screen.listen()
 screen.tracer(0)
 
 tim = Player()
-car = CarManager()
-
 
 # Event handlers
 screen.onkey(tim.up, "Up")
 screen.onkey(tim.down, "Down")
+
+car = CarManager()
 car.create_car()
+
+score = Scoreboard()
 
 game_is_on = True
 count = 0.0
 while game_is_on:
     time.sleep(0.1)
     count += 0.1
-    print(count)
     # 3/car.level - frequency cars spawn
     if count > 3/car.level:
         count = 0.0
@@ -33,6 +34,12 @@ while game_is_on:
     screen.update()
     for index in range(car.get_amount_of_cars()):
         if car.get_car(index).distance(tim) < 20:
-            exit()
+            game_is_on = False
+    if tim.ycor() > 280:
+        car.level_up()
+        tim.level_up()
+        score.clear()
+        score.level_up()
+
 
 screen.exitonclick()
