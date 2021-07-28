@@ -25,10 +25,14 @@ while game_is_on:
     time.sleep(0.1)
     count += 0.1
     print(count)
+    # 3/car.level - frequency cars spawn
     if count > 3/car.level:
         count = 0.0
         car.create_car()
     car.drive()
     screen.update()
+    for index in range(car.get_amount_of_cars()):
+        if car.get_car(index).distance(tim) < 20:
+            exit()
 
 screen.exitonclick()
