@@ -11,14 +11,24 @@ screen.listen()
 screen.tracer(0)
 
 tim = Player()
+car = CarManager()
+
 
 # Event handlers
 screen.onkey(tim.up, "Up")
 screen.onkey(tim.down, "Down")
+car.create_car()
 
 game_is_on = True
+count = 0.0
 while game_is_on:
     time.sleep(0.1)
+    count += 0.1
+    print(count)
+    if count > 3/car.level:
+        count = 0.0
+        car.create_car()
+    car.drive()
     screen.update()
 
 screen.exitonclick()
